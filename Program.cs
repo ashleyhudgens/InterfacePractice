@@ -3,62 +3,26 @@
 
 namespace CalculatorApp
 {
+
     class Program
     {
         static void Main(string[] args)
         {
-            //Declare variables
-            String typeOfArithmetic;
-            String firstNumber;
-            String secondNumber;
-            var getOperands = new TestInterfaceClass();
-            var display = new Results();
-            int result;
+            //declare variables
+            var runProgram = new UserInput();
+            var display = new DisplayTotal();
 
-            //Get user input per arithmetic type
-            Console.Write("What type of arithmetic? Addition, Subtraction, Division or Multiplication: ");
-            typeOfArithmetic = Console.ReadLine();
+            //call methods to perform actions (getting user input on type of arithmetic, first/second operands
+            String typeOfArithmetic = runProgram.getTypeOfArithmetic();
+            double firstOperand = runProgram.getFirstOperand();
+            double secondOperand = runProgram.getSecondOperand();
 
-            //Get user input for first number and convert from String to int
-            Console.Write("Enter the first number: ");
-            firstNumber = Console.ReadLine();
-            getOperands.firstOperand = Convert.ToInt32(firstNumber);
+            //call methods to perform actions (calculating total depending on type of arithmetic, displaying total dependind on type of arithmetic
+            double total = runProgram.getTotal(typeOfArithmetic);
+            display.getDisplayTotal(typeOfArithmetic, firstOperand, secondOperand, total);
 
-            //Get user input for second number and convert from String to int
-            Console.Write("Enter the second number: ");
-            secondNumber = Console.ReadLine();
-            getOperands.secondOperand = Convert.ToInt32(secondNumber);
-
-            //determine calculations based on arithmetic type
-            if (typeOfArithmetic.ToLower() == "addition")
-            {
-                String operatorType = "+";
-                result = getOperands.Add();
-                display.displayTotal(getOperands.firstOperand, getOperands.secondOperand, result, operatorType);
-            }
-            else if (typeOfArithmetic.ToLower() == "subtraction")
-            {
-                String operatorType = "-";
-                result = getOperands.Subtract();
-                display.displayTotal(getOperands.firstOperand, getOperands.secondOperand, result, operatorType);
-            }
-            else if (typeOfArithmetic.ToLower() == "multiplication")
-            {
-                String operatorType = "*";
-                result = getOperands.Multiply();
-                display.displayTotal(getOperands.firstOperand, getOperands.secondOperand, result, operatorType);
-            }
-            else if (typeOfArithmetic.ToLower() == "division")
-            {
-                String operatorType = "/";
-                result = getOperands.Divide();
-                display.displayTotal(getOperands.firstOperand, getOperands.secondOperand, result, operatorType);
-            } else
-            {
-                Console.Write("Invalid arithmetic type");
-            }
-                //causes cmd prompt to stay open for debugging
-                Console.ReadLine();
+            //causes cmd prompt to stay open for debugging
+            Console.ReadLine();
         }
     }
 }

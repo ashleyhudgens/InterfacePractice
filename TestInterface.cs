@@ -9,9 +9,13 @@ namespace CalculatorApp
     public interface ITestInterface
     {
         //only declarations in an interface, must use class to define variables
-        int firstOperand { get; set; }
-        int secondOperand { get; set; }
-
-        int total { get; set; }
+        //all are automatically public
+        String typeOfArithmetic { get; set; }
+        double firstOperand { get; set; }
+        double secondOperand { get; set; }
+        String getTypeOfArithmetic();
+        double getFirstOperand();
+        double getSecondOperand();
+        double getTotal(String typeOfArithmetic);
     }
 }
