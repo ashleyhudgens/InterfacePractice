@@ -1,27 +1,20 @@
 ﻿using System;
 
 
-namespace CalculatorApp
+namespace TestingInterfaces
 {
-
     class Program
     {
         static void Main(string[] args)
         {
-            //declare variables
-            var runProgram = new UserInput();
-            var display = new DisplayTotal();
+            var testing = new Arithmetic();
 
-            //call methods to perform actions (getting user input on type of arithmetic, first/second operands
-            String typeOfArithmetic = runProgram.getTypeOfArithmetic();
-            double firstOperand = runProgram.getFirstOperand();
-            double secondOperand = runProgram.getSecondOperand();
+            testing.getTypeOfArithmetic();
+            testing.getFirstOperand();
+            testing.getSecondOperand();
+            testing.getDisplayTotal();
 
-            //call methods to perform actions (calculating total depending on type of arithmetic, displaying total dependind on type of arithmetic
-            double total = runProgram.getTotal(typeOfArithmetic);
-            display.getDisplayTotal(typeOfArithmetic, firstOperand, secondOperand, total);
-
-            //causes cmd prompt to stay open for debugging
+            //keep cmd prompt open
             Console.ReadLine();
         }
     }
